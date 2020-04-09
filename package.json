@@ -1,0 +1,30 @@
+{
+  "name": "mockable",
+  "version": "1.0.0",
+  "description": "Mock your REST API with a REST API.",
+  "main": "app.js",
+  "scripts": {
+    "test": "test"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/quef/mockable.git"
+  },
+  "keywords": [
+    "mock",
+    "http",
+    "server",
+    "rest",
+    "api",
+    "test"
+  ],
+  "author": "Valentin Quefelec",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/quef/mockable/issues"
+  },
+  "homepage": "https://github.com/quef/mockable#readme",
+  "dependencies": {
+    "express": "^4.17.1"
+  }
+}
