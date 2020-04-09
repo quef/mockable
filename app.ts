@@ -1,3 +1,5 @@
+#!/usr/bin/env node
+
 import path from 'path'
 import bodyParser from 'body-parser'
 import { NextFunction, Request, Response } from "express"
@@ -8,7 +10,7 @@ const express = require('express')
 const app = express()
 
 const options = {
-    debug: process.env.DEBUG || true,
+    debug: process.env.DEBUG || false,
     port: process.env.MOCKABLE_PORT || 3001,
     prefix: process.env.MOCKABLE_PREFIX || '/_mock',
 }
@@ -24,7 +26,7 @@ app.post(path.join(options.prefix, '/start'), (req: Request, res: Response) => {
     res.send('OK')
 })
 
-app.post(path.join(options.prefix, '/stop'), (rreq: Request, res: Response) => {
+app.post(path.join(options.prefix, '/stop'), (req: Request, res: Response) => {
     if (options.debug) {
         if (repository.all().length > 0) {
             console.error('Stop mocking... There are stille active mocks: %j', repository.all().map((mock: Mock) => print(mock)))
@@ -49,12 +51,12 @@ app.all('/*', (req: Request, res: Response) => {
     const mock = repository.pull(req.method, req.url)
     if(mock) {
         if (options.debug) {
-            console.log('Mock Matching: ', print(mock))
+            console.log('Mock Matching:', print(mock))
         }
         res.status(mock.status).json(mock.response)
     } else {
         if (options.debug) {
-            console.log('No mock matching for: ', req.method, ' ', req.url)
+            console.log('No mock matching for:', req.method, req.url)
         }
         res.status(500).json({
             error: 'No mock found for this url'
