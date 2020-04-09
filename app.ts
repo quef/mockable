@@ -2,6 +2,7 @@
 
 import path from 'path'
 import bodyParser from 'body-parser'
+import cors from 'cors'
 import { NextFunction, Request, Response } from "express"
 import MockRepository from "./src/Mock/MockRepository"
 import {Mock, print} from "./src/Mock/Mock";
@@ -16,8 +17,12 @@ const options = {
 }
 
 app.use(bodyParser.json())
+app.use(cors({
+    origin: '*'
+}))
 
 const repository = new MockRepository()
+
 
 app.post(path.join(options.prefix, '/start'), (req: Request, res: Response) => {
     if(options.debug) {
