@@ -1,5 +1,5 @@
 {
-  "name": "mockable",
+  "name": "mockable-api",
   "version": "1.0.0",
   "description": "Mock your REST API with a REST API.",
   "main": "dist/app.js",
