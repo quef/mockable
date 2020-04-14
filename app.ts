@@ -28,6 +28,7 @@ app.post(path.join(options.prefix, '/start'), (req: Request, res: Response) => {
     if(options.debug) {
         console.log('Start mocking server-side http requests...')
     }
+    repository.clear()
     res.send('OK')
 })
 
