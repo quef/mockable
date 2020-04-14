@@ -1,13 +1,14 @@
 {
   "name": "mockable-api",
-  "version": "1.0.2",
+  "version": "1.0.3",
   "description": "Mock your REST API with a REST API.",
   "main": "dist/app.js",
   "bin": {
     "mockable": "dist/app.js"
   },
   "scripts": {
-    "prepare": "npm run build",
+    "copy-utils": "cp -r utils dist/",
+    "prepare": "npm run copy-utils && npm run build",
     "build": "tsc && chmod +x dist/app.js",
     "test": "test"
   },
